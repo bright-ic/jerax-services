@@ -1,0 +1,165 @@
+<section class="training-services-section">
+    <%- include('./partials/minor-header'); %>
+                            <p>Blog</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main-content padding-small">
+        <div class="container pd-x-0 pd-lg-x-10 pd-xl-x-0">
+            <div class="media d-block d-lg-flex title-section">
+                <div class="media-body">
+                    <div class="timeline-group tx-13">
+                        <div class="timeline-item">
+                            <div class="timeline-label">Today   <span class="timeline-time">10:30pm</span> </div>
+                            <div class="timeline-body">
+                                <a href="" class="d-block wd-lg-50p"><img src="/images/blog/img27.jpg" class="img-fluid" alt=""></a>
+                                <h1 class="mg-b-0 timeline-title bold">Building a Simple User Interface</h1>
+                                <p class="timeline-category"><a href="" data-id="" class="tx-primary">Category 1</a></p>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis saepe repellat quasi. Vel ut voluptatum qui quibusdam commodi nulla modi odio rerum laboriosam iste obcaecati, vitae consequatur iure sint omnis? In this lesson, you create a layout in XML that includes a text field and a button. In the next lesson, your app responds when the </p>
+                                <div id="post-container">
+                                    <nav class="nav nav-row mg-t-15">
+                                        <a href="javascript:void(0);" id="like-btn" class="nav-link">
+                                            <i class="fa-regular fa-heart"></i> <span id="likes_count">0</span> Likes
+                                        </a>
+                                        <!-- <a href="javascript:void(0);" id="comment-btn" class="nav-link"><i class="fa-solid fa-comment"></i> Comment</a> -->
+                                    </nav>
+
+                                        <!-- Comment Section -->
+                                        <div id="comments-section">
+                                            <input type="text" id="comment-input" placeholder="Write a comment..." />
+                                            <button id="submit-comment" class="btn theme-btn color-btn btn-lg">Post</button>
+                                            <ul id="comments-list"></ul>
+                                        </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Testing script for likes and unlikes to be removed when API is available  -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    let likeBtn = document.getElementById("like-btn");
+    let likesCount = document.getElementById("likes_count");
+    let commentInput = document.getElementById("comment-input");
+    let submitCommentBtn = document.getElementById("submit-comment");
+    let commentsList = document.getElementById("comments-list");
+
+    let liked = false;
+    let likeCount = 0;
+
+    // Handle Like Button Click
+    likeBtn.addEventListener("click", function () {
+        liked = !liked;
+        likeCount += liked ? 1 : -1;
+        likesCount.textContent = likeCount;
+
+        let heartIcon = likeBtn.querySelector("i");
+        heartIcon.classList.toggle("fa-solid");  
+        heartIcon.classList.toggle("fa-regular"); 
+    });
+
+    // Handle Comment Submission
+    submitCommentBtn.addEventListener("click", function () {
+        let commentText = commentInput.value.trim();
+        if (commentText === "") return;
+        let loggedInUser = 'Elisha';
+        let loggedInUser2 = 'Sirsea';
+
+        let comment = document.createElement("li");
+        comment.className = "comment-item";
+        comment.innerHTML = `
+            <div class="comment-header">
+               <div class="d-flex align-items-center">
+                    <div class="avatar avatar-online">
+                        <img src="/images/img23.jpg" class="comment-avatar rounded-circle" alt="User">
+                    </div>
+                    <div class="me-2 comment-user-details">
+                        <div class="comment-username">${loggedInUser} </div>
+                        <span class="tx-12comment-date tx-color-03">${new Date().toLocaleString()}</span>
+                    </div>
+               </div>
+                
+            </div>
+            <p class="comment-text">${commentText}</p>
+            <div class="comment-actions">
+                <a href="javascript:void(0);" class="like-comment">Like</a>
+                <a href="javascript:void(0);" class="reply-comment">Reply</a>
+            </div>
+            <ul class="replies-list"></ul>
+        `;
+
+        commentsList.appendChild(comment);
+        commentInput.value = "";
+
+      
+        setupCommentEvents(comment);
+    });
+
+    function setupCommentEvents(comment) {
+        let likeCommentBtn = comment.querySelector(".like-comment");
+        let replyCommentBtn = comment.querySelector(".reply-comment");
+        let repliesList = comment.querySelector(".replies-list");
+
+        // Like Comment
+        likeCommentBtn.addEventListener("click", function () {
+            let liked = likeCommentBtn.classList.toggle("liked");
+            likeCommentBtn.textContent = liked ? "Unlike" : "Like";
+        });
+
+        // Reply to Comment
+        replyCommentBtn.addEventListener("click", function () {
+            let replyInput = document.createElement("input");
+            replyInput.type = "text";
+            replyInput.placeholder = "Reply...";
+            
+            let sendReplyBtn = document.createElement("button");
+            sendReplyBtn.textContent = "Reply";
+            
+            replyCommentBtn.parentNode.appendChild(replyInput);
+            replyCommentBtn.parentNode.appendChild(sendReplyBtn);
+
+            sendReplyBtn.addEventListener("click", function () {
+                let replyText = replyInput.value.trim();
+                if (replyText === "") return;
+
+                let reply = document.createElement("li");
+                reply.className = "reply-item";
+                reply.innerHTML = `
+                    <div class="reply-header">
+                        <div class="avatar avatar-online">
+                         <img src="/images/img23.jpg" class="reply-avatar rounded-circle" alt="user">
+                        </div>
+                        <span class="reply-date">${new Date().toLocaleString()}</span>
+                    </div>
+                    <p class="reply-text">${replyText}</p>
+                `;
+
+                repliesList.appendChild(reply);
+                replyInput.remove();
+                sendReplyBtn.remove();
+            });
+        });
+    }
+});
+
+</script>

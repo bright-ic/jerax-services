@@ -92,7 +92,7 @@ $(function() {
 
     responsiveMenu();
 })
-
+$(document).ready(function () {
 // This is for the navigation to hide and show
 var responsiveMenu = function() {
     var menuType = 'desktop';
@@ -136,19 +136,9 @@ var responsiveMenu = function() {
     });
 }
 
-if ($("#contact-form")[0]) {
-    alert('con2');
-    $("#contact-form").off("submit").on("submit", function(e) {
-        e.preventDefault();
-        display_spinner();
-        process_form_submit('contact-form');
-    });
-}
-
 var headerFixed = function() {
     if ($('body').hasClass('header-sticky')) {
         var nav = $('.header');
-        alert('con');
         if (nav.size() != 0) {
             var offsetTop = $('.header').offset().top,
                 headerHeight = $('.header').height(),
@@ -176,6 +166,24 @@ var headerFixed = function() {
     }
 };
 
+$("#mainnav ul > li").click(function () {
+    $("#mainnav ul > li").removeClass("active");
+    $(this).addClass("active");
+});
+
+
+if ($("#contact-form")[0]) {
+    $("#contact-form").off("submit").on("submit", function(e) {
+        e.preventDefault();
+        display_spinner();
+        process_form_submit('contact-form');
+    });
+}
+if (matchMedia('only screen and (min-width: 991px)').matches) {
+    headerFixed();
+}
+responsiveMenu();
+
  //Accordion Box
  if ($('.accordion-box').length) {
     $(".accordion-box").on('click', '.acc-btn', function() {
@@ -200,3 +208,5 @@ var headerFixed = function() {
         }
     });
 }
+
+});

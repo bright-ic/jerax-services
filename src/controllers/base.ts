@@ -2,7 +2,7 @@
 import _ , { has, isObject as _isObject, each, isString, isEmpty } from 'lodash';
 import { Request, Response } from 'express';
 import { SessionData } from 'express-session';
-import { IS_LIVE } from '../lib/contants';
+import { IS_LIVE, URL_ADMIN } from '../lib/contants';
 
 /**
  * Base functionality for all routes/controllers to inherit in other controllers/routes
@@ -12,12 +12,16 @@ class BaseController {
 	is_live: boolean
 	is_dev: boolean
 	is_local: boolean
+	url_admin: boolean
+
 
 	constructor(req:Request) {
 		this.live_domain = process.env.LIVE_DOMAIN || "";
 		this.is_live = false;
 		this.is_dev = true;
 		this.is_local = false;
+		this.url_admin = req.originalUrl.startsWith(URL_ADMIN);
+
 
 		if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
 			this.is_live = true;
@@ -46,6 +50,13 @@ class BaseController {
 		// if there is no local template data to merge with global data
 		if (typeof localData === 'undefined') {
 			localData = {};
+		}
+
+		if (!_.isEmpty(req.originalUrl)) {
+			localData.request_url = req.originalUrl;
+			localData.url_admin = req.originalUrl.includes(URL_ADMIN);
+		} else {
+			localData.url_admin = false;
 		}
 
 		if (this.is_dev) {

@@ -1,0 +1,143 @@
+<header class="navbar navbar-header navbar-header-fixed">
+    <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <div class="navbar-brand">
+        <a href="/" class="df-logo">Jerax<span>Services</span></a>
+    </div>
+    <!-- navbar-brand -->
+
+    <div id="navbarMenu" class="navbar-menu-wrapper">
+        <div class="navbar-menu-header">
+            <a href="/" class="df-logo">Jerax<span>Services</span></a>
+            <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
+        </div>
+        <!-- navbar-menu-header -->
+        <ul class="nav navbar-menu">
+            <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
+            <li class="nav-item active">
+                <a href="<%= BASE_ADMIN %>" class="nav-link"><i data-feather="pie-chart"></i>Home</a>
+            </li>
+            <li class="nav-item with-sub">
+                <a href="#" class="nav-link"><i data-feather="package"></i>Users</a>
+                <ul class="navbar-menu-sub">
+                    <li class="nav-sub-item"><a href="/users/view_users" class="nav-sub-link"><i data-feather="user"></i> View users</a></li>
+                    <li class="nav-sub-item"><a href="/users/add_users" class="nav-sub-link"><i data-feather="user-check"></i>Add users</a></li>
+                    <li class="nav-sub-item"><a href="/users/update_users" class="nav-sub-link"><i data-feather="user-plus"></i>Update users</a></li>
+                    <li class="nav-sub-item"><a href="/users/active" class="nav-sub-link"><i data-feather="user-check"></i>Active users</a></li>
+                    <li class="nav-sub-item"><a href="/users/inactive" class="nav-sub-link"><i data-feather="user-plus"></i>Inactive users</a></li>
+                </ul>
+            </li>
+            <li class="nav-item with-sub">
+                <a href="#" class="nav-link"><i data-feather="package"></i>Tickets</a>
+                <ul class="navbar-menu-sub">
+                    <li class="nav-sub-item"><a href="/tickets/tickets" class="nav-sub-link"><i data-feather="files"></i> Tickets</a></li>
+                    <li class="nav-sub-item"><a href="/tickets/new_tickets" class="nav-sub-link"><i data-feather="file"></i>New Tickets</a></li>
+                    <li class="nav-sub-item"><a href="/tickets/solved_tickets" class="nav-sub-link"><i data-feather="file"></i> Solved Tickets</a></li>
+                    <li class="nav-sub-item"><a href="/tickets/unresolved_tickets" class="nav-sub-link"><i data-feather="file"></i> Unresolved Tickets</a></li>
+                    <li class="nav-sub-item"><a href="/tickets/open_tickets" class="nav-sub-link"><i data-feather="files"></i> Open Tickets</a></li>
+                </ul>
+            </li>
+            <li class="nav-item with-sub">
+                <a href="#" class="nav-link"><i data-feather="package"></i>Appointments</a>
+                <ul class="navbar-menu-sub">
+                    <li class="nav-sub-item"><a href="/appointments/new_appointment" class="nav-sub-link"><i data-feather="file"></i> New Appointment</a></li>
+                    <li class="nav-sub-item"><a href="/appointments/booked_appointment" class="nav-sub-link"><i data-feather="file"></i> Booked Appointment</a></li>
+                </ul>
+            </li>
+            <li class="nav-item with-sub">
+                <a href="#" class="nav-link"><i data-feather="package"></i>Blog</a>
+                <ul class="navbar-menu-sub">
+                   
+                    <li class="nav-sub-item"><a href="<%= ADMIN_ROUTES.ROUTE_LIST_BLOG %>" class="nav-sub-link"><i data-feather="files"></i> List Blog</a></li>
+                    <li class="nav-sub-item"><a href="<%= ADMIN_ROUTES.ROUTE_ADD_BLOG %>" class="nav-sub-link"><i data-feather="files"></i> Add Blog</a></li>
+                    <li class="nav-label mg-t-20">Blog Category</li>
+                    <li class="nav-sub-item"><a href="<%= ADMIN_ROUTES.ROUTE_ADD_BLOG_CATEGORY %>" class="nav-sub-link"><i data-feather="file-text"></i>Add Category</a></li>
+                    <li class="nav-sub-item"><a href="<%= ADMIN_ROUTES.ROUTE_LIST_BLOG_CATEGORY %>" class="nav-sub-link"><i data-feather="file-text"></i> List Category</a></li>
+                </ul>
+            </li>
+            <li class="nav-item pos-absolute bottom-20">
+                <a href="/logout" class="nav-link"><i data-feather="log-out"></i>Sign Out</a>
+            </li>
+        </ul>
+    </div>
+    <!-- navbar-menu-wrapper -->
+
+    <div class="navbar-right">
+            <a id="navbarSearch" href="" class="search-link"><i data-feather="search"></i></a>
+            <!-- this message can be use to notify admin if user/client requested for a call back, there is a request call back on the frontend  -->
+            <div class="dropdown dropdown-message">
+                    <a href="" role="button" class="dropdown-link new-indicator" data-bs-toggle="dropdown">
+                        <i data-feather="message-square"></i>
+                        <span>1</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <div class="dropdown-header">New Messages</div>
+                        <a href="" class="dropdown-item">
+                            <div class="media">
+                                <div class="media-body mg-l-15">
+                                    <strong>Socrates Itumay</strong>
+                                    <p>nam libero tempore cum so...</p>
+                                    <span>Mar 15 12:32pm</span>
+                                </div>
+                                <!-- media-body -->
+                            </div>
+                            <!-- media -->
+                        </a>
+                        <div class="dropdown-footer"><a href="">View all Messages</a></div>
+                    </div>
+                    <!-- dropdown-menu -->
+            </div>
+        <!-- dropdown -->
+        <div class="dropdown dropdown-notification">
+            <a href="" role="button" class="dropdown-link new-indicator" data-bs-toggle="dropdown">
+                <i data-feather="bell"></i>
+                <span>2</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end">
+                <div class="dropdown-header">Notifications</div>
+                <a href="" class="dropdown-item">
+                    <div class="media">
+                        <div class="media-body mg-l-15">
+                            <p>Congratulate <strong>Socrates Itumay</strong> for work anniversaries</p>
+                            <span>Mar 15 12:32pm</span>
+                        </div>
+                        <!-- media-body -->
+                    </div>
+                    <!-- media -->
+                </a>
+                <div class="dropdown-footer"><a href="#">View all Notifications</a></div>
+            </div>
+            <!-- dropdown-menu -->
+        </div>
+        <!-- dropdown -->
+        <div class="dropdown dropdown-profile">
+            <a href="" role="button" class="dropdown-link" data-bs-toggle="dropdown" data-bs-display="static">
+                <div class="avatar avatar-sm"><img src="/images/img23.jpg" class="rounded-circle" alt=""></div>
+            </a>
+            <!-- dropdown-link -->
+            <div class="dropdown-menu dropdown-menu-end tx-13">
+                <h6 class="tx-semibold mg-b-5">Katherine Pechon</h6>
+                <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
+
+                <a href="#" class="dropdown-item"><i data-feather="edit-3"></i> Edit Profile</a>
+                <a href="/admin/users_profile" class="dropdown-item"><i data-feather="user"></i> View Users Profile</a>
+                <div class="dropdown-divider"></div>
+                <a href="javascript(0)" class="dropdown-item"><i data-feather="settings"></i>Account Settings</a>
+                <a href="javascript(0)" class="dropdown-item"><i data-feather="settings"></i>Privacy Settings</a>
+                <a href="javascript(0)" class="dropdown-item"><i data-feather="log-out"></i>Sign Out</a>
+            </div>
+            <!-- dropdown-menu -->
+        </div>
+        <!-- dropdown -->
+    </div>
+    <!-- navbar-right -->
+    <div class="navbar-search">
+        <div class="navbar-search-header">
+            <input type="search" class="form-control" placeholder="Type and hit enter to search...">
+            <button class="btn"><i data-feather="search"></i></button>
+            <a id="navbarSearchClose" href="" class="link-03 mg-l-5 mg-lg-l-10"><i data-feather="x"></i></a>
+        </div>
+    </div>
+    <!-- navbar-search -->
+</header>
+
+<%- body %>

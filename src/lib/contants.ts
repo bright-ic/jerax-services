@@ -13,6 +13,6 @@ export const MAILGUN_URL:string = process.env.MAILGUN_URL || "api.mailgun.net";
 export const MAILGUN_DOMAIN:string = process.env.MAILGUN_DOMAIN || "";
 
 
-
+export const URL_ADMIN = process.env.ADMIN || '';
 
 export const REDIS_URL:string = process.env.REDIS_URL || '';
